@@ -250,7 +250,12 @@ async function boot() {
       if (r.width < 4 || r.height < 4) return;       // hidden at this breakpoint
       const d = DIM[f];
       const k = Math.min(r.width / (d[0] + 1), r.height / (d[1] + 1.8));
-      list.push({ el, form: f, dark: isDark(el), x: 0, y: 0, k, pos: null, col: null });
+      let stk = null, stkTop = 0;                     // nearest sticky ancestor: the dock is pinned while it is stuck
+      for (let e = el.parentElement; e && e !== document.body; e = e.parentElement) {
+        const cs = getComputedStyle(e);
+        if (cs.position === 'sticky') { stk = e; stkTop = parseFloat(cs.top) || 0; break; }
+      }
+      list.push({ el, form: f, dark: isDark(el), x: 0, y: 0, ox: 0, oy: 0, k, pos: null, col: null, stk, stkTop });
       place(list[list.length - 1], sy);
     });
     list.sort((a, b) => a.y - b.y || a.x - b.x);
@@ -287,6 +292,7 @@ async function boot() {
   }
   function place(D, sy) {                           // live: docks inside sticky columns move with the page
     const r = D.el.getBoundingClientRect();
+    D.ox = D.x; D.oy = D.y;                          // where it was last frame (sticky docks travel with the scroll)
     D.x = r.left + r.width / 2; D.y = r.top + sy + r.height / 2 - D.k * 0.35;
   }
   // ---- state (all preallocated)
@@ -358,12 +364,20 @@ async function boot() {
       if (i < 0) { seg = 0; s = 0; } else if (i >= n - 1) { seg = n - 2; s = 1; } else {
         seg = i;
         const gap = Math.max(1, docks[i + 1].y - docks[i].y), u = (F - docks[i].y) / gap;
-        const hb = Math.min(0.2, (VH * 0.3) / gap);               // hold in the dock while it is well in view
+        const hb = Math.min(0.26, (VH * 0.36) / gap);               // hold in the dock while it is well in view
         s = smoother(clamp01((u - hb) / (1 - 2 * hb)));
       }
     }
     const A = docks[seg], B = docks[Math.min(seg + 1, n - 1)];
+    // a dock in a pinned sticky card travels with the scroll: the focus line is always past it, so hold the
+    // piece in the card instead of letting it creep down the card's copy toward the next dock
+    if (s > 0 && s < 1 && A.stk && Math.abs(A.stk.getBoundingClientRect().top - A.stkTop) < 1.5) s = 0;
     if (seg !== segI) { segI = seg; planSegment(A, B); }
+    if (placed) {                                                    // a sticky dock moved since last frame: carry the
+      const ddx = (A.x - A.ox) * (1 - s) + (B.x - B.ox) * s;         // piece with it at once so it never drags across
+      const ddy = (A.y - A.oy) * (1 - s) + (B.y - B.oy) * s;         // the card's text; the spring only flies real hops
+      if (Math.abs(ddx) < VW && Math.abs(ddy) < VH * 3) { px += ddx; py += ddy; }
+    }
     lastG = seg + s; lastS = s;
 
     let tk = A.k + (B.k - A.k) * s;
@@ -383,7 +397,7 @@ async function boot() {
     for (let sI = 0; sI < steps; sI++) {
       stV += (36 * (stT - st) - 12 * stV) * dt; st += stV * dt;
       if (!placed) { px = tx; py = ty; kS = tk; placed = true; }
-      const w = 6.5;
+      const w = 5.4;                                                // a touch slower between docks
       vx += (w * w * (tx - px) - 2 * w * vx) * dt; px += vx * dt;
       vy += (w * w * (ty - py) - 2 * w * vy) * dt; py += vy * dt;
       kV += (81 * (tk - kS) - 18 * kV) * dt; kS += kV * dt;

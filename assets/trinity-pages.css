@@ -735,3 +735,82 @@ body.blog-index .post-header + section{padding-top:48px;}
 .about-story .prose > h2{position:sticky;top:120px;font-size:clamp(32px,3.6vw,48px);max-width:10ch;}
 .about-story .prose > p,.about-story .prose > .callout{grid-column:2;}
 @media (max-width:900px){.about-story .prose{display:block;max-width:var(--col-text);}.about-story .prose > h2{position:static;max-width:none;}}
+
+/* ===== Site8 round 1: the FAQ index is a white panel on the warm canvas; blog cards use the site's own
+   label, arrow and meta system (no tracked caps, no text arrows, blurbs cut to three lines) ===== */
+.s7-faq-side{background:#fff;border-radius:10px;padding:24px 24px 8px;box-shadow:0 1px 0 var(--hair),0 24px 48px -36px rgba(20,40,75,.25);}
+.s7-search{background:var(--warm);border-color:transparent;margin-bottom:18px;}
+.s7-search:focus-within{border-color:var(--navy);background:#fff;}
+.s7-topics{border-top-color:var(--hair);}
+.s7-topics a{border-bottom-color:var(--hair);min-height:46px;}
+.s7-topics li:last-child a{border-bottom:none;}
+@media (max-width:1024px){.s7-faq-side{padding:20px 20px 6px;}}
+
+.blog-grid .tag{font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--red);font-variant-numeric:tabular-nums;}
+.blog-grid .card.post-card:not(.featured) .card-body > p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.blog-grid .card-body .post-meta{color:var(--grey);}
+.blog-grid .card-body .more{display:inline-flex;align-items:center;gap:10px;min-height:44px;margin:10px 0 0;font-size:15px;font-weight:600;color:var(--navy);letter-spacing:-0.01em;}
+.blog-grid .card-body .more i{width:36px;height:36px;border-radius:50%;border:1px solid #CFCAC0;position:relative;flex:0 0 auto;transition:background .3s,border-color .3s,transform .45s cubic-bezier(.2,.7,.2,1);}
+.blog-grid .card-body .more i::before{content:"";position:absolute;left:10px;top:17px;width:14px;height:1.5px;background:var(--navy);}
+.blog-grid .card-body .more i::after{content:"";position:absolute;left:17px;top:13px;width:7px;height:7px;border-top:1.5px solid var(--navy);border-right:1.5px solid var(--navy);transform:rotate(45deg);}
+.blog-grid .card.post-card:hover .more i{background:var(--red);border-color:var(--red);transform:translateX(4px);}
+.blog-grid .card.post-card:hover .more i::before{background:#fff;}
+.blog-grid .card.post-card:hover .more i::after{border-color:#fff;}
+.blog-grid .card-body{border-top-color:var(--hair);}
+.s7-crumb a,.svc-breadcrumbs a,.post-header .breadcrumbs a{min-width:44px;}
+.blog-grid .card.post-card:not(.featured) .card-body > p{flex:none;}
+.blog-grid .card.post-card:not(.featured) .card-body .more{margin-top:auto;padding-top:10px;}
+
+/* ===== Site8 round 2: work and reviews heroes carry a real photo in the side column (the right half was
+   empty navy / warm with a lone piece); the piece docks on the photo's corner. FAQ topics sit in white
+   panels on the warm canvas like the index. The full-width photo band is capped at its pixels. ===== */
+@media (min-width:1025px){.s7-hero-grid:has(.s7-hero-side--photo){grid-template-columns:7fr 5fr;align-items:end;}}
+.s7-hero-side--photo{align-items:stretch;gap:18px;}
+.s7-hero-photo{position:relative;margin:0;border-radius:10px;}
+.s7-hero-photo img{display:block;width:100%;height:clamp(300px,28vw,400px);object-fit:cover;border-radius:10px;}
+.s7-hero-photo .dock{position:absolute;left:-28px;bottom:-30px;}
+.s7-hero-side--photo .t-hero-rating,.s7-hero-side--photo .s7-google{align-self:flex-end;margin-top:8px;}
+@media (max-width:1024px){
+  .s7-hero-side--photo{margin-top:8px;}
+  .s7-hero-photo img{height:clamp(240px,46vw,400px);}
+  .s7-hero-photo .dock{left:-8px;bottom:-24px;}
+}
+.s7-topic{background:#fff;border-radius:10px;padding:32px 32px 6px;}
+.s7-topic + .s7-topic{margin-top:24px;}
+.s7-topic .t-faq-item:last-child{border-bottom:none;}
+@media (max-width:760px){.s7-topic{padding:22px 20px 2px;}}
+.s7-band img,.s7-band--tall img{height:clamp(320px,40vw,560px);}
+/* AA on navy: the red label and the giant quote mark read at 2.9:1 on navy, so they go white there */
+.s7-navy .t-sec-n{color:#fff;}
+.s7-navy .t-quote-mark,.s7-feature .t-quote-mark{color:#fff;}
+.s7-search input{min-height:44px;}
+
+.about-hero .owner-photo{max-width:410px;margin-left:auto;}
+@media (max-width:900px){.about-hero .owner-photo{margin-left:0;}}
+.s7-fig img.s7-main[width="410"]{max-width:410px;height:auto;margin-left:auto;}
+
+/* ===== Site8 round 3: the blog index opens with the latest guide beside the title (the header's right half was
+   empty and the featured card repeated the same image below); page titles share one scale ===== */
+.post-header-grid{display:grid;grid-template-columns:6fr 6fr;gap:48px;align-items:end;}
+.post-latest{display:grid;grid-template-columns:1fr;background:#fff;border-radius:10px;overflow:hidden;color:var(--navy);box-shadow:0 1px 0 var(--hair),0 30px 60px -40px rgba(20,40,75,.3);transition:transform .45s cubic-bezier(.2,.7,.2,1);}
+.post-latest:hover{transform:translateY(-3px);}
+.post-latest-img{display:block;aspect-ratio:16/9;overflow:hidden;background:#EEF0F3;}
+.post-latest-img img{width:100%;height:100%;object-fit:cover;display:block;transition:filter .5s ease;}
+.post-latest:hover .post-latest-img img{filter:brightness(.92);}
+.post-latest-body{display:flex;flex-direction:column;gap:8px;padding:22px 26px 20px;}
+.post-latest-k{font-size:13px;color:var(--grey);}
+.post-latest-k b{color:var(--red);font-weight:600;margin-right:8px;}
+.post-latest-h{font-size:clamp(20px,1.8vw,25px);font-weight:700;letter-spacing:-0.03em;line-height:1.15;color:var(--navy);}
+.post-latest-p{font-size:15px;line-height:1.5;color:var(--text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.post-latest-m{font-size:13px;color:var(--grey);}
+.post-latest-go{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:15px;font-weight:600;color:var(--navy);margin-top:2px;}
+.post-latest-go i{width:36px;height:36px;border-radius:50%;border:1px solid #CFCAC0;position:relative;flex:0 0 auto;transition:background .3s,border-color .3s,transform .45s cubic-bezier(.2,.7,.2,1);}
+.post-latest-go i::before{content:"";position:absolute;left:10px;top:17px;width:14px;height:1.5px;background:var(--navy);}
+.post-latest-go i::after{content:"";position:absolute;left:17px;top:13px;width:7px;height:7px;border-top:1.5px solid var(--navy);border-right:1.5px solid var(--navy);transform:rotate(45deg);}
+.post-latest:hover .post-latest-go i{background:var(--red);border-color:var(--red);transform:translateX(4px);}
+.post-latest:hover .post-latest-go i::before{background:#fff;}
+.post-latest:hover .post-latest-go i::after{border-color:#fff;}
+body.blog-index .post-header{padding-bottom:72px;}
+@media (max-width:900px){.post-header-grid{grid-template-columns:1fr;gap:28px;}}
+.s7-h1{font-size:clamp(40px,5vw,72px);font-weight:750;letter-spacing:-0.04em;line-height:.98;}
+@media (max-width:1024px){.s7-hero-side--photo .t-hero-rating,.s7-hero-side--photo .s7-google{margin-top:56px;}}
