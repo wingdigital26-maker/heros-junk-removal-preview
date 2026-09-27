@@ -1,0 +1,37 @@
+/* Hero's travelling cube piece (piece5): dock stations + the one full-viewport canvas. See logo-piece.js.
+   Dock API: <span class="dock" data-form="pin|truck|couch|star|camera|house|h|box" data-size="S|M|L" aria-hidden="true"></span>
+   The piece never docks in the header. Page CSS places the docks; this file only sizes them. */
+.lp-canvas{position:fixed;left:0;top:0;width:100%;height:100%;z-index:45;/* under the header (50), over the rail (40) */pointer-events:none;display:block;}
+
+.dock{display:block;flex:0 0 auto;width:var(--dock,136px);height:var(--dock,136px);pointer-events:none;position:relative;}
+.dock[data-size="S"]{--dock:96px;}
+.dock[data-size="M"]{--dock:136px;}
+.dock[data-size="L"]{--dock:180px;}
+@media (max-width:759px){
+  .dock{--dock:96px;}
+  .dock[data-size="S"]{--dock:72px;}
+  .dock[data-size="M"]{--dock:96px;}
+  .dock[data-size="L"]{--dock:124px;}
+}
+
+/* legacy logo4 spots (until the page moves to .dock) */
+.lp-dock{display:block;flex:0 0 auto;width:var(--d,140px);height:var(--d,140px);pointer-events:none;position:relative;}
+.t-pill-row .lp-dock{margin-left:auto;align-self:center;margin-block:calc((44px - var(--d,140px)) / 2);}
+.t-work-head .lp-dock{margin:0 auto;align-self:center;}
+.t-reviews-lede .lp-dock{margin:0 auto;align-self:center;}
+.t-svc-intro .lp-dock{margin-top:44px;}
+.t-footer-more .lp-dock{margin-top:18px;}
+@media (max-width:759px){
+  .lp-dock:not([data-m]){display:none;}
+  .lp-dock[data-m]{width:var(--dm,96px);height:var(--dm,96px);}
+  .t-pill-row .lp-dock[data-m]{margin-block:calc((40px - var(--dm,96px)) / 2);}
+}
+/* header slot is no longer the piece's home: the mark there is a plain image */
+.t-logo .lp-slot{display:block!important;position:relative;flex:0 0 auto;width:40px;height:40px;}
+.t-logo .lp-slot img{display:block;width:40px;height:40px;}
+@media (max-width:759px){ .t-logo .lp-slot,.t-logo .lp-slot img{width:36px;height:36px;} }
+
+/* reduced motion / no WebGL: a still Blender render sits in each dock */
+.dock-still{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;
+  filter:drop-shadow(0 6px 8px rgba(20,40,75,.14));}
+@media (prefers-reduced-motion: reduce){ .lp-canvas{display:none;} }

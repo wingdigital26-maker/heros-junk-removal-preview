@@ -1,0 +1,85 @@
+/* Hero's Junk Removal - inner pages (about, areas, 404). Loads after final.css. */
+
+/* ---- shared ---- */
+.inner-section{padding:72px 0;}
+.inner-section--tight{padding:56px 0 0;}
+.prose{max-width:66ch;margin:0 auto;}
+.prose > p{color:var(--muted);font-size:17px;line-height:1.65;margin-bottom:18px;}
+.prose > p:last-child{margin-bottom:0;}
+.prose h2{font-size:clamp(24px,2.8vw,32px);margin:0 0 16px;}
+.prose h2 + p{margin-top:0;}
+.cta-row--left{justify-content:flex-start;}
+
+.callout{background:var(--white);border:1px solid var(--hair);border-left:3px solid var(--red);border-radius:0 16px 16px 0;padding:20px 24px;margin:26px 0;}
+.callout p{color:var(--muted);font-size:16px;line-height:1.6;margin:0;}
+.callout strong{color:var(--ink);}
+
+/* ---- about: hero ---- */
+.about-hero{padding:56px 0 8px;}
+.about-hero-grid{display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center;}
+.about-hero h1{font-size:clamp(36px,5vw,58px);line-height:1.05;max-width:14ch;margin-bottom:18px;}
+.about-hero .lead{font-size:18px;line-height:1.55;color:var(--muted);max-width:46ch;margin-bottom:28px;}
+.about-hero .owner-photo{margin:0;}
+.about-hero .owner-photo img{height:auto;}
+@media (max-width:900px){
+  .about-hero-grid{grid-template-columns:1fr;gap:28px;}
+  .about-hero .owner-photo{order:-1;max-width:320px;margin:0 auto;}
+  .about-hero .cta-row{justify-content:center;}
+  .about-hero .lead{max-width:none;}
+}
+
+/* ---- about: photo strip ---- */
+.photo-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.photo-strip figure{margin:0;border-radius:16px;overflow:hidden;aspect-ratio:4/5;position:relative;}
+.photo-strip img{width:100%;height:100%;object-fit:cover;display:block;}
+@media (max-width:900px){.photo-strip{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:480px){.photo-strip{grid-template-columns:1fr 1fr;gap:10px;}}
+
+/* ---- about: values as numbered steps (reuses .how-step look) ---- */
+.value-steps{display:flex;flex-direction:column;gap:32px;max-width:66ch;margin:0 auto;}
+.value-step{display:flex;gap:22px;align-items:flex-start;}
+.value-step .n{font-family:"Fraunces",serif;font-weight:600;font-size:44px;color:var(--red);line-height:1;flex:none;width:52px;}
+.value-step h3{font-size:19px;margin-bottom:6px;}
+.value-step p{color:var(--muted);font-size:16px;line-height:1.6;margin:0;}
+@media (max-width:640px){.value-step{gap:16px;}.value-step .n{font-size:34px;width:40px;}}
+
+/* ---- about + areas: small section intro ---- */
+.mini-head{max-width:640px;margin:0 auto 40px;text-align:center;}
+.mini-head h2{font-size:clamp(26px,3.2vw,36px);line-height:1.15;}
+.mini-head p{margin-top:12px;font-size:16px;color:var(--muted);line-height:1.55;}
+
+/* ---- areas: page hero ---- */
+.areas-hero{padding:64px 0 8px;text-align:center;}
+.areas-hero h1{font-size:clamp(34px,4.6vw,52px);line-height:1.08;margin:0 auto 18px;max-width:16ch;}
+.areas-hero .lead{font-size:18px;line-height:1.6;color:var(--muted);max-width:62ch;margin:0 auto 26px;}
+.areas-hero .cta-row{justify-content:center;}
+
+/* ---- areas: city tiles ---- */
+.city-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.city-tile{display:block;background:var(--white);border:1px solid var(--hair);border-radius:20px;padding:30px 26px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+.city-tile:hover{transform:translateY(-3px);box-shadow:0 20px 34px -18px rgba(28,25,23,0.28);border-color:var(--hair);}
+.city-tile h3{font-size:28px;margin-bottom:10px;}
+.city-tile p{color:var(--muted);font-size:15px;line-height:1.55;margin:0 0 18px;}
+.city-tile .city-go{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--red);}
+.city-tile .city-go svg{width:15px;height:15px;transition:transform .2s ease;}
+.city-tile:hover .city-go svg{transform:translate(3px,-2px);}
+@media (max-width:900px){.city-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:560px){.city-grid{grid-template-columns:1fr;}}
+
+.areas-note{max-width:66ch;margin:36px auto 0;}
+
+/* ---- 404 ---- */
+.nf-hero{padding:88px 0 8px;text-align:center;}
+.nf-number{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(96px,18vw,220px);line-height:0.9;color:var(--red);letter-spacing:-0.02em;margin:0 0 4px;}
+.nf-hero h1{font-size:clamp(28px,3.6vw,40px);line-height:1.15;margin:0 auto 16px;max-width:20ch;}
+.nf-hero .lead{font-size:17px;line-height:1.6;color:var(--muted);max-width:52ch;margin:0 auto 30px;}
+.nf-hero .cta-row{justify-content:center;margin-bottom:8px;}
+
+.nf-tiles{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px;}
+.nf-tiles .svc-tile::before{background:linear-gradient(180deg,rgba(28,25,23,0.25) 0%,rgba(28,25,23,0.94) 100%);}
+.nf-tiles .svc-tile-content{background:rgba(28,25,23,0.94);}
+@media (max-width:900px){.nf-tiles{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px;}}
+@media (max-width:480px){.nf-tiles{grid-template-columns:1fr;grid-auto-rows:180px;}}
+
+/* about: three Nash reviews in one even row */
+@media (min-width:1025px){.about-page .review-cards,body .review-cards.about-three{grid-template-columns:repeat(3,1fr);}}

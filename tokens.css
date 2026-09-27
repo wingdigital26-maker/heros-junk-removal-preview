@@ -1,0 +1,171 @@
+/* ==========================================================================
+   WING HOUSE KIT - tokens.css
+   Extracted 2026-09-22 from wing-site-v4/style.css (the build Jack calls
+   "the one we have"). Every number below shipped and passed the gate.
+
+   YOU EDIT ONE BLOCK: "BRAND". Everything under it is derived and is the
+   same on every Wing build. Changing a scale below the BRAND block is a
+   design decision that belongs in design-brief.md, not a default.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. BRAND - the only block you touch per client.
+   Twelve colours, five field colours, three families. Pick ONE preset,
+   delete the other.
+
+   Contrast law (checked by the gate, not optional):
+     --ink on --bg and on --surface        >= 7:1   body text
+     --ink-muted on --bg and on --surface  >= 7:1   secondary text: it carries
+                                                    real copy, not decoration
+     --edge on --bg, --bar, --surface      >= 3:1   input and control borders
+     text on --accent                      >= 4.5:1 button labels. The
+                                                    Northcomm 3.61:1 white on
+                                                    #FF3800 is the failure this
+                                                    line exists to stop.
+   -------------------------------------------------------------------------- */
+:root{
+  /* --- LIGHT preset (wing-site-v4, Hero's, Renewal) --- */
+  --bg:#ECEEF2;            /* page floor */
+  --bg-2:#F7F8FA;          /* lifted page floor / open mobile menu */
+  --bar:#E6E8ED;           /* fixed nav + footer plate */
+  --surface:#FFFFFF;       /* panels, media frames, form plate */
+  --surface-2:#F1F3F6;     /* secondary button, active chip */
+  --surface-3:#E4E7EC;     /* secondary button pressed */
+  --ink:#0B1020;           /* headings + body */
+  --ink-muted:#465065;     /* leads, captions, labels, nav rest state */
+  --accent:#2757E6;        /* THE signal colour - one primary action per view */
+  --on-accent:#FFFFFF;     /* text ON the accent: check THIS pair for 4.5:1 */
+  --accent-press:#1F47C9;  /* hover/active, and accent text on light surfaces */
+  --figure:#8A5A00;        /* numerals in a proof ledger; never a second CTA */
+  --danger:#B42318;
+  --line:rgba(11,16,32,.14);  /* hairline: ink at 14% */
+  --edge:#737B8F;             /* control boundary */
+
+  /* Gradient field (.field block). A base plus four pinned colours, all
+     pulled from THIS brand: tints of the accent and figure, never a stock
+     pair. Inside a field --ink-muted becomes --ink (base.css), so hierarchy
+     comes from size and weight, and the law is: --ink >= 7:1 on the base AND
+     on every pin (copy sits on whichever colour drifts under it), --accent
+     >= 3:1 on each so the button still stands off the field. visual_run
+     checks both.
+     No indigo->violet, blue->cyan or pink->orange pairing (C7). */
+  --field-base:#DCE2EE;
+  --field-1:#AFC1F2;   /* accent tint */
+  --field-2:#EDC98C;   /* figure tint */
+  --field-3:#FFFFFF;   /* white lift */
+  --field-4:#C3CDE0;   /* cool shadow */
+
+  /* --- DARK preset: swap the twelve above for these, change nothing else ---
+  --bg:#0C1017; --bg-2:#131926; --bar:#0F141E; --surface:#161D2B;
+  --surface-2:#1D2637; --surface-3:#263146; --ink:#F2F5FA; --ink-muted:#A9B4C7;
+  --accent:#5B8CFF; --on-accent:#0C1017; --accent-press:#7FA6FF; --figure:#E0B252; --danger:#FF6B5E;
+  --line:rgba(242,245,250,.14); --edge:#7C89A0;
+  --field-base:#101A33; --field-1:#1E3A8A; --field-2:#5A3E0E; --field-3:#1B2438; --field-4:#070A12;
+  Dark also needs the [data-theme="dark"] body rule in base.css: light text on
+  a dark field reads thinner, so body goes up one weight notch.
+  ------------------------------------------------------------------------- */
+
+  /* Two families minimum. Display carries headings, text carries body, mono
+     carries labels and figures. One family for everything is the
+     single-typeface tell and the lint fails it. Self-host both. Record the
+     licence in design-dna.md before launch; "free for personal use" is not
+     usable on a client site. */
+  --font-display:'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-text:'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  /* --------------------------------------------------------------------------
+     2. TYPE SCALE - fluid between 360px and 1440px (Utopia method).
+     Ratio 1.25 (major third) on phones so the big steps still fit a 375px
+     line, opening to 1.333 (perfect fourth) on desktop.
+     Base 17-18px, not 16 flat: an editorial single-column page reads better
+     one notch over the floor, and 16px is the phone-zoom floor, not a target.
+     -------------------------------------------------------------------------- */
+  --step--1: 0.875rem;                                              /* 14 fixed: small text never shrinks */
+  --step-0: clamp(1.0625rem, 1.0417rem + 0.0926vw, 1.1250rem);      /* 17.0 - 18.0 */
+  --step-1: clamp(1.3281rem, 1.2708rem + 0.2546vw, 1.5000rem);      /* 21.2 - 24.0 */
+  --step-2: clamp(1.6602rem, 1.5469rem + 0.5035vw, 2.0000rem);      /* 26.6 - 32.0 */
+  --step-3: clamp(2.0752rem, 1.8780rem + 0.8763vw, 2.6667rem);      /* 33.2 - 42.7 */
+  --step-4: clamp(2.5940rem, 2.2735rem + 1.4245vw, 3.5556rem);      /* 41.5 - 56.9 */
+  --step-5: clamp(3.2425rem, 2.7431rem + 2.2196vw, 4.7407rem);      /* 51.9 - 75.9 */
+  --step-6: clamp(4.0531rem, 3.2972rem + 3.3598vw, 6.3210rem);      /* 64.8 - 101.1 */
+
+  /* ROLE MAP - a size is never chosen, it is looked up here.
+     hero words   step-6  lh 1.00  track -.035em  w500
+     h1           step-5  lh 1.04  track -.03em   w500
+     h2           step-4  lh 1.08  track -.025em  w500
+     section head step-3  lh 1.12  track -.02em   w500   (one short line)
+     h3 / figure  step-2  lh 1.15  track -.015em  w500
+     lead, FAQ q  step-1  lh 1.40
+     body         step-0  lh 1.50
+     small        step--1 lh 1.45  (nav, footer, labels, errors)
+     mono label   step--1 mono, uppercase, track +.1em
+     Line-height falls as size rises; tracking goes negative as size rises.
+     Both are already in the map. Do not re-derive them per page. */
+
+  /* --------------------------------------------------------------------------
+     3. SPACING - 4px base, one scale, no ad-hoc values.
+     Rhythm rule: inside a block use 2-4 adjacent steps; between blocks use
+     --space-chapter. One value everywhere is the even-spacing tell.
+     -------------------------------------------------------------------------- */
+  --space-1:.25rem;  /* 4  */
+  --space-2:.5rem;   /* 8  */
+  --space-3:.75rem;  /* 12 */
+  --space-4:1rem;    /* 16 */
+  --space-5:1.5rem;  /* 24 */
+  --space-6:2rem;    /* 32 */
+  --space-7:3rem;    /* 48 */
+  --space-8:4rem;    /* 64 */
+  --space-9:6rem;    /* 96 */
+  --space-10:8rem;   /* 128 */
+  --space-chapter:clamp(4rem, 2.667rem + 5.926vw, 8rem);  /* 64 phone -> 128 desktop */
+  --gutter:var(--space-5);
+  --target:2.75rem;  /* 44px: the floor for ANY tap target, footer links included */
+  --nav-h:calc(var(--target) + var(--space-3) * 2);
+
+  /* --------------------------------------------------------------------------
+     4. RADIUS - three values plus a pill. Nested radius = outer minus padding,
+     floored at --radius-1. One radius everywhere is the uniform-radius tell.
+     -------------------------------------------------------------------------- */
+  --radius-1:4px;      /* inputs and anything nested in a padded panel */
+  --radius-2:12px;     /* small controls: burger, chips */
+  --radius-3:20px;     /* panels, media frames */
+  --radius-pill:999px; /* buttons only */
+
+  /* Component geometry. Here so a brand can change the logo size or icon
+     weight without a builder reaching for a raw px in a page stylesheet. */
+  --logo-h:27px;
+  --icon:18px;
+
+  /* --------------------------------------------------------------------------
+     5. MEASURE + COLUMNS - why the pages read like a document.
+     -------------------------------------------------------------------------- */
+  --col-text:45rem;    /* 720  prose column */
+  --col-media:60rem;   /* 960  image / wide figure column */
+  --col-wide:77.5rem;  /* 1240 nav, hero and footer share these outer gutters */
+  --measure:48ch;      /* ~65-73 real characters; never past ~75 */
+  --measure-lead:40ch;
+
+  /* --------------------------------------------------------------------------
+     6. MOTION - three durations, two curves, nothing else.
+     Everything animating at once, and linear timing, are both tells.
+     -------------------------------------------------------------------------- */
+  --dur-1:.2s;   /* colour, border, icon state */
+  --dur-2:.4s;   /* reveal, fade, small translate */
+  --dur-3:.6s;   /* section-scale entrance; longer needs a written reason */
+  --ease-out:cubic-bezier(.22,.61,.36,1);
+  --ease-in-out:cubic-bezier(.65,.05,.36,1);
+  /* The one written exception to "three durations": an ambient loop on a
+     .field--flow backdrop. Slow enough that you feel it more than see it;
+     faster than ~20s reads as a screensaver. */
+  --dur-ambient:32s;
+
+  /* --------------------------------------------------------------------------
+     7. FIELD - the grainy gradient block. Idea credit: FeralUI Gradient
+     Builder (feralui.dev/gradients); our own build, none of their code.
+     Colours live in BRAND above. These are the finish.
+     -------------------------------------------------------------------------- */
+  --field-reach:62%;   /* default band: how far each pin's colour spreads */
+  --field-soften:48px; /* blur over the pins; 0 gives visible blobs, the tell */
+  --grain:.07;         /* monochrome grain; .04-.10. Never coloured (I4) */
+}
