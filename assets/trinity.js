@@ -3,14 +3,37 @@
 
   var burger = document.querySelector('.t-burger');
   var menu = document.querySelector('.t-mobile-menu');
-  if(burger && menu){
-    burger.addEventListener('click', function(){
-      menu.classList.toggle('open');
-    });
-    menu.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){ menu.classList.remove('open'); });
-    });
+  function setMenu(open){
+    menu.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('t-menu-open', open);
   }
+  if(burger && menu){
+    burger.addEventListener('click', function(){ setMenu(!menu.classList.contains('open')); });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ setMenu(false); });
+    });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && menu.classList.contains('open')){ setMenu(false); burger.focus(); } });
+    window.addEventListener('resize', function(){ if(window.innerWidth>1000 && menu.classList.contains('open')) setMenu(false); });
+  }
+
+  // header panels (Where we go, What we haul): the caret toggles them for touch and keyboard; hover opens them in CSS
+  var items = Array.prototype.slice.call(document.querySelectorAll('.t-has-menu'));
+  function closeMenus(except){ items.forEach(function(it){ if(it!==except){ it.classList.remove('open'); var b=it.querySelector('.t-nav-caret'); if(b) b.setAttribute('aria-expanded','false'); } }); }
+  items.forEach(function(it){
+    var b=it.querySelector('.t-nav-caret'); if(!b) return;
+    b.addEventListener('click', function(e){ e.stopPropagation(); var open=!it.classList.contains('open'); closeMenus(it); it.classList.toggle('open',open); b.setAttribute('aria-expanded',String(open)); });
+    it.addEventListener('mouseleave', function(){ it.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
+  });
+  document.addEventListener('click', function(e){ if(!e.target.closest || !e.target.closest('.t-has-menu')) closeMenus(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key!=='Escape') return;
+    var open=items.filter(function(it){ return it.classList.contains('open') || it.contains(document.activeElement); })[0];
+    closeMenus();
+    if(open){ var b=open.querySelector('.t-nav-caret'); if(b && open.contains(document.activeElement)) b.focus(); }
+  });
+  // keyboard: leaving a panel with Tab closes it
+  items.forEach(function(it){ it.addEventListener('focusout', function(){ setTimeout(function(){ if(!it.contains(document.activeElement)){ it.classList.remove('open'); var b=it.querySelector('.t-nav-caret'); if(b) b.setAttribute('aria-expanded','false'); } },0); }); });
 
   // marquee: duplicate the run so the loop is seamless
   document.querySelectorAll('.t-marquee-track').forEach(function(t){ t.innerHTML += t.innerHTML; });
