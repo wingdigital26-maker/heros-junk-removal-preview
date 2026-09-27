@@ -854,3 +854,9 @@ body.blog-index .post-header{padding-bottom:72px;}
 .svc-tile .svc-tile-arrow svg,.contact-list svg,.contact-icon svg{width:var(--icon) !important;height:var(--icon) !important;}
 .svc-aside-card h2,.blog-grid .card-body h2,.contact-list h3{font-size:var(--fs-h3);}
 .section-head p,.svc-intro p{font-size:var(--fs-lead);}
+
+/* hero photo pages: the piece sits beside the rating under the photo, never on the photo */
+.s7-hero-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:8px;}
+.s7-hero-foot .dock{position:static;margin:0;flex:0 0 auto;}
+.s7-hero-side--photo .s7-hero-foot .t-hero-rating{align-self:center;margin-top:0;}
+.s7-hero-side--photo .s7-hero-foot .s7-google{align-self:center;margin-top:0;}
