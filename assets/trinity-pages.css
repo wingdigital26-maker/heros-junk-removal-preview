@@ -787,7 +787,7 @@ body.blog-index .post-header + section{padding-top:48px;}
 
 .about-hero .owner-photo{max-width:410px;margin-left:auto;}
 @media (max-width:900px){.about-hero .owner-photo{margin-left:0;}}
-.s7-fig img.s7-main[width="410"]{max-width:410px;height:auto;margin-left:auto;}
+.s7-fig img.s7-main[src*="crew-truck"]{max-width:410px;height:auto;margin-left:auto;object-fit:contain;}
 
 /* ===== Site8 round 3: the blog index opens with the latest guide beside the title (the header's right half was
    empty and the featured card repeated the same image below); page titles share one scale ===== */
@@ -814,3 +814,43 @@ body.blog-index .post-header{padding-bottom:72px;}
 @media (max-width:900px){.post-header-grid{grid-template-columns:1fr;gap:28px;}}
 .s7-h1{font-size:clamp(40px,5vw,72px);font-weight:750;letter-spacing:-0.04em;line-height:.98;}
 @media (max-width:1024px){.s7-hero-side--photo .t-hero-rating,.s7-hero-side--photo .s7-google{margin-top:56px;}}
+
+/* the crew photo is shown whole, at its own 3:4 ratio, wherever it appears: no crop, no zoom */
+.svc-tile img[src*="crew-truck"],.blog-grid .card-img img[src*="crew-truck"]{object-fit:contain;background:var(--warm);}
+.about-hero .owner-photo img[src*="crew-truck"]{height:auto;object-fit:contain;}
+.about-crew .t-avatar.t-avatar-photo{width:96px;height:128px;border-radius:8px;}
+.about-crew .t-avatar.t-avatar-photo img{object-fit:contain;}
+
+/* ===== Site9 round 1: about, areas, contact, footer ===== */
+/* about: the photo strip sits on the warm canvas with the values, no white slab between them */
+.about-strip{background:var(--warm);padding:88px 0 0;}
+/* areas: six equal city cards in a clean 3 x 2 grid, no dashed filler cells; the piece docks beside the intro */
+.s7-map{padding:96px 0;}
+.s7-map-head{align-items:start;}
+.s7-map-head .dock{display:block;margin-top:28px;}
+.s7-map-grid{grid-template-columns:repeat(3,1fr);grid-auto-rows:auto;}
+.s7-map-grid > .s7-city{grid-column:auto;grid-row:auto;min-height:230px;}
+@media (max-width:1000px){.s7-map-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:600px){.s7-map-grid{grid-template-columns:1fr;}}
+/* the owner band and the closing band carry less empty navy and white */
+.about-band{padding:80px 0;}
+.contact-band{padding:96px 0 88px;}
+.contact-hero-grid{align-items:start;}
+@media (max-width:760px){.about-strip{padding-top:56px;}.about-band{padding:56px 0;}.contact-band{padding:64px 0;}}
+
+/* ===== Site9 sizing pass (inner pages): the shared scale from trinity.css replaces every one-off size ===== */
+.svc-hero h1,.contact-hero h1,.post-header h1,.about-hero h1,.areas-hero h1,.s7-h1,.nf-hero h1{font-size:var(--fs-h1);}
+.section-head h2,.mini-head h2,.s7-gal-intro h2,.s7-rv-head h2,.s7-map-head h2,.s7-svc-head h2,.s7-cities-head h2,.about-story .prose > h2,.prose h2,.blog-grid .card.post-card.featured .card-body > h2,.faq-grid > div:first-child h2,.contact-band h2{font-size:var(--fs-h2) !important;line-height:1.02;}
+.contact-band h2{font-size:var(--fs-h1) !important;line-height:.96;}
+.svc-content h2,.post-col .post h2,.by-city h2,.s7-topic h2,.svc-content .prose h2{font-size:var(--fs-h2-sm) !important;}
+.svc-tile h3,.s7-svc-tile h3,.s7-city h3,.s7-city-list h3,.city-tile h3,.value-step h3,.post-latest-h,.review-card h3,.svc-aside-card h3,.contact-card h2{font-size:var(--fs-h3);}
+.lead,.svc-hero-lead,.s7-lead,.post-col .post .lead,.contact-band p,.s7-map-head p,.mini-head p,.contact-hero .lead,.s7-topic-lead,.blog-band blockquote{font-size:var(--fs-lead);}
+.prose > p,.svc-content p,.svc-content li,.post-col .post p,.post-col .post li,.review-text,.faq-body p,.t-faq-a p,.value-step p,.callout p,.svc-callout p,.areas-note p,.s7-city-lists p,.contact-list p,.contact-card p,.s7-faq-a p{font-size:var(--fs-body);}
+.svc-tile p,.s7-svc-tile p,.s7-city p,.s7-city-list p,.s7-city-list li a,.post-meta,.s7-crumb,.review-who .when,.tag-pill,.contact-band .cities,.t-work-cap,.about-band-hours,.s7-fig figcaption,.blog-grid .card-body .post-meta,.contact-list small,.field-note{font-size:var(--fs-small);}
+.btn-primary,.call-quiet{min-height:var(--btn-h);}
+.s7-city .s7-city-go,.more,.rv-google{min-height:var(--btn-h-sm);}
+.svc-tile-arrow svg,.more svg,.s7-city-go svg,.rv-google svg,.faq-list summary svg{width:var(--icon);height:var(--icon);}
+.review-cards,.svc-grid,.svc-other-grid,.keep-grid,.s7-map-grid,.blog-grid,.s7-cities-grid{align-items:stretch;}
+.svc-tile .svc-tile-arrow svg,.contact-list svg,.contact-icon svg{width:var(--icon) !important;height:var(--icon) !important;}
+.svc-aside-card h2,.blog-grid .card-body h2,.contact-list h3{font-size:var(--fs-h3);}
+.section-head p,.svc-intro p{font-size:var(--fs-lead);}
