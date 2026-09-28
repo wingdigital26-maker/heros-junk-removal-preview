@@ -26,10 +26,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/trinity.css?v=34">
-<link rel="stylesheet" href="../assets/trinity-pages.css?v=34">
+<link rel="stylesheet" href="../assets/trinity.css?v=35">
+<link rel="stylesheet" href="../assets/trinity-pages.css?v=35">
 <link rel="stylesheet" href="../assets/logo-piece/logo-piece.css?v=1">
 <!-- /trinity:head -->
+<link rel="stylesheet" href="../assets/blog.css?v=1">
 </head>
 <body class="blog-index">
 <a class="skip" href="#main">Skip to main content</a>
@@ -211,8 +212,14 @@
 
 <section>
   <div class="wrap">
+    <div class="post-filter" role="group" aria-label="Filter guides by topic">
+      <button type="button" class="post-chip is-on" data-filter="all" aria-pressed="true">All guides</button>
+      <button type="button" class="post-chip" data-filter="how">How it works</button>
+      <button type="button" class="post-chip" data-filter="haul">What we haul</button>
+      <button type="button" class="post-chip" data-filter="cleanouts">Cleanouts and estates</button>
+    </div>
     <div class="grid-2 blog-grid" style="margin-top:0">
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="entertainment-center-armoire-old-tv-removal.html" tabindex="-1" aria-hidden="true"><img src="../img/blog/entertainment-center-armoire-old-tv-removal.jpg" alt="A wood entertainment center wall unit with a TV and side shelves in a carpeted living room" width="1200" height="800" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Furniture</span>
@@ -222,7 +229,7 @@
         <a class="more" href="entertainment-center-armoire-old-tv-removal.html" aria-label="Read getting rid of an old entertainment center, armoire or tube tv">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="cleanouts">
         <a class="card-img" href="moving-in-together-two-households-one-house.html" tabindex="-1" aria-hidden="true"><img src="../img/blog/moving-in-together-two-households-one-house.jpg" alt="A couple unpacking a moving box in their living room" width="1200" height="800" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Moving</span>
@@ -232,7 +239,7 @@
         <a class="more" href="moving-in-together-two-households-one-house.html" aria-label="Read two households, one house: what to do with the duplicates">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="old-mower-small-engine-equipment.html" tabindex="-1" aria-hidden="true"><img src="../img/blog/old-mower-small-engine-equipment.jpg" alt="An old red push mower on a lawn" width="1200" height="737" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Yard and outdoor</span>
@@ -242,7 +249,7 @@
         <a class="more" href="old-mower-small-engine-equipment.html" aria-label="Read old mowers, blowers and the small engine pile">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="cleanouts">
         <a class="card-img" href="barn-outbuilding-cleanout-acreage.html" tabindex="-1" aria-hidden="true"><img src="../img/blog/barn-outbuilding-cleanout-acreage.jpg" alt="Old machinery and scrap piled inside a weathered wooden barn" width="1200" height="800" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Cleanouts</span>
@@ -252,7 +259,7 @@
         <a class="more" href="barn-outbuilding-cleanout-acreage.html" aria-label="Read what comes out of a barn or an outbuilding nobody uses">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="bulky-trash-the-city-skipped.html" tabindex="-1" aria-hidden="true"><img src="../img/p/rig-loaded-1100.webp" alt="Trailer loaded with junk ready to haul" width="1100" height="733" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How it works</span>
@@ -262,7 +269,7 @@
         <a class="more" href="bulky-trash-the-city-skipped.html" aria-label="Read hauling away bulky trash the city would not collect in the northern DFW suburbs">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="cleanouts">
         <a class="card-img" href="medical-equipment-removal-after-care-ends.html" tabindex="-1" aria-hidden="true"><img src="../img/crew-loading.jpg" alt="Crew loading the truck" width="1600" height="1067" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Cleanouts</span>
@@ -272,7 +279,7 @@
         <a class="more" href="medical-equipment-removal-after-care-ends.html" aria-label="Read removing hospital beds and home medical equipment in the northern DFW suburbs">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="new-build-move-in-boxes-and-builder-leftovers.html" tabindex="-1" aria-hidden="true"><img src="../img/debris.jpg" alt="Moving leftovers ready for pickup" width="1300" height="867" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -282,7 +289,7 @@
         <a class="more" href="new-build-move-in-boxes-and-builder-leftovers.html" aria-label="Read clearing move-in boxes and builder leftovers from a new build in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="above-ground-pool-removal.html" tabindex="-1" aria-hidden="true"><img src="../img/hottub.jpg" alt="A hot tub or above-ground water feature staged for removal" width="1300" height="867" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -292,7 +299,7 @@
         <a class="more" href="above-ground-pool-removal.html" aria-label="Read above-ground pool teardown and removal in the northern DFW suburbs">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="closet-cleanout-clothes-soft-goods.html" tabindex="-1" aria-hidden="true"><img src="../img/p/card-furniture-820.webp" alt="Couch and furniture ready for pickup" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How It Works</span>
@@ -309,7 +316,7 @@
         </div>
         <a class="btn-primary" href="sms:+12142779069?&amp;body=Hi%2C%20here%20is%20a%20photo%20of%20what%20I%20need%20gone.">Text a photo</a>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="out-of-state-cleanout-remote-owner.html" tabindex="-1" aria-hidden="true"><img src="../img/house-hero-sm.webp" alt="A North Texas house ready for a cleanout" width="700" height="654" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How It Works</span>
@@ -319,7 +326,7 @@
         <a class="more" href="out-of-state-cleanout-remote-owner.html" aria-label="Read out of state and remote house cleanout coordination in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="previous-owner-left-it-behind.html" tabindex="-1" aria-hidden="true"><img src="../img/p/job-garage-clearout-900.webp" alt="A cleared space after a cleanout" width="900" height="1125" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -329,7 +336,7 @@
         <a class="more" href="previous-owner-left-it-behind.html" aria-label="Read clearing out what a previous owner left behind in a newly purchased North Texas home">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="shed-cleanout-whats-inside.html" tabindex="-1" aria-hidden="true"><img src="../img/p/garage-820.webp" alt="A cleared storage space" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -339,7 +346,7 @@
         <a class="more" href="shed-cleanout-whats-inside.html" aria-label="Read backyard shed cleanout and junk removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="old-carpet-and-pad-after-flooring-install.html" tabindex="-1" aria-hidden="true"><img src="../img/debris.jpg" alt="Flooring debris removal" width="1300" height="867" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -349,7 +356,7 @@
         <a class="more" href="old-carpet-and-pad-after-flooring-install.html" aria-label="Read old carpet and pad removal after a flooring install in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="home-office-furniture-after-back-to-the-office.html" tabindex="-1" aria-hidden="true"><img src="../img/p/card-furniture-820.webp" alt="Furniture ready for pickup" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -359,7 +366,7 @@
         <a class="more" href="home-office-furniture-after-back-to-the-office.html" aria-label="Read home office furniture and electronics removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="old-grill-patio-furniture-end-of-season.html" tabindex="-1" aria-hidden="true"><img src="../img/p/yard-820.webp" alt="Yard and patio debris removal" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -369,7 +376,7 @@
         <a class="more" href="old-grill-patio-furniture-end-of-season.html" aria-label="Read old grill and patio furniture removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="cribs-bunk-beds-outgrown-kids-room.html" tabindex="-1" aria-hidden="true"><img src="../img/p/card-furniture-820.webp" alt="Furniture ready for pickup" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -379,7 +386,7 @@
         <a class="more" href="cribs-bunk-beds-outgrown-kids-room.html" aria-label="Read crib and bunk bed removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="eviction-cleanout-rental-property.html" tabindex="-1" aria-hidden="true"><img src="../img/p/job-curbside-pickup-820.webp" alt="Curbside pickup job" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How The Work Runs</span>
@@ -389,7 +396,7 @@
         <a class="more" href="eviction-cleanout-rental-property.html" aria-label="Read eviction and abandoned property cleanouts for North Texas rentals">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="water-heater-softener-utility-closet.html" tabindex="-1" aria-hidden="true"><img src="../img/p/appliance-820.webp" alt="Appliances ready for pickup" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -399,7 +406,7 @@
         <a class="more" href="water-heater-softener-utility-closet.html" aria-label="Read water heater and water softener removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="clearing-a-room-for-a-hospital-bed.html" tabindex="-1" aria-hidden="true"><img src="../img/crew-loading.jpg" alt="Crew loading the truck" width="1600" height="1067" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How The Work Runs</span>
@@ -409,7 +416,7 @@
         <a class="more" href="clearing-a-room-for-a-hospital-bed.html" aria-label="Read clearing a room for a hospital bed or wheelchair in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="brush-piles-tree-limbs-city-collection.html" tabindex="-1" aria-hidden="true"><img src="../img/p/yard-820.webp" alt="Yard debris removal" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -419,7 +426,7 @@
         <a class="more" href="brush-piles-tree-limbs-city-collection.html" aria-label="Read brush pile and tree limb removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="piano-pool-table-safe-removal.html" tabindex="-1" aria-hidden="true"><img src="../img/p/card-furniture-820.webp" alt="Furniture ready for pickup" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How The Work Runs</span>
@@ -429,7 +436,7 @@
         <a class="more" href="piano-pool-table-safe-removal.html" aria-label="Read piano, pool table and safe removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="guest-room-before-the-holidays.html" tabindex="-1" aria-hidden="true"><img src="../img/p/card-furniture-820.webp" alt="Furniture ready for pickup" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Around The House</span>
@@ -439,7 +446,7 @@
         <a class="more" href="guest-room-before-the-holidays.html" aria-label="Read clearing a spare room back into a guest room before the holidays">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="garage-shelving-workbench-removal.html" tabindex="-1" aria-hidden="true"><img src="../img/p/garage-820.webp" alt="Garage cleanout" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How The Work Runs</span>
@@ -449,7 +456,7 @@
         <a class="more" href="garage-shelving-workbench-removal.html" aria-label="Read garage shelving and workbench removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="cleanouts">
         <a class="card-img" href="inherited-house-cleanout-keeping-it.html" tabindex="-1" aria-hidden="true"><img src="../img/p/estate-820.webp" alt="An estate cleanout in progress" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Estate And Family</span>
@@ -459,7 +466,7 @@
         <a class="more" href="inherited-house-cleanout-keeping-it.html" aria-label="Read inherited house cleanout in North Texas when the family keeps the property">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="cleanouts">
         <a class="card-img" href="after-the-estate-sale-what-is-left.html" tabindex="-1" aria-hidden="true"><img src="../img/p/estate-820.webp" alt="An estate cleanout in progress" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Estate and Downsizing</span>
@@ -469,7 +476,7 @@
         <a class="more" href="after-the-estate-sale-what-is-left.html" aria-label="Read estate cleanout after an estate sale in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="hoa-violation-yard-cleanup.html" tabindex="-1" aria-hidden="true"><img src="../img/p/yard-820.webp" alt="Yard debris removal" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How The Work Runs</span>
@@ -479,7 +486,7 @@
         <a class="more" href="hoa-violation-yard-cleanup.html" aria-label="Read HOA violation and code compliance cleanup in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="treadmills-home-gyms-bonus-room.html" tabindex="-1" aria-hidden="true"><img src="../img/p/card-furniture-820.webp" alt="Furniture ready for pickup" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -489,7 +496,7 @@
         <a class="more" href="treadmills-home-gyms-bonus-room.html" aria-label="Read treadmill and exercise equipment removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="slab-leak-soaked-carpet-drywall-furniture.html" tabindex="-1" aria-hidden="true"><img src="../img/debris.jpg" alt="Water-damaged material removal" width="1300" height="867" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -499,7 +506,7 @@
         <a class="more" href="slab-leak-soaked-carpet-drywall-furniture.html" aria-label="Read water damage debris removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="clearing-rooms-before-foundation-or-plumbing-work.html" tabindex="-1" aria-hidden="true"><img src="../img/p/job-garage-clearout-900.webp" alt="A cleared space after a cleanout" width="900" height="1125" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How The Work Runs</span>
@@ -509,7 +516,7 @@
         <a class="more" href="clearing-rooms-before-foundation-or-plumbing-work.html" aria-label="Read house cleanout before foundation or plumbing repairs">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="attic-cleanout-what-is-up-there.html" tabindex="-1" aria-hidden="true"><img src="../img/p/job-garage-clearout-900.webp" alt="A cleared space after a cleanout" width="900" height="1125" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -519,7 +526,7 @@
         <a class="more" href="attic-cleanout-what-is-up-there.html" aria-label="Read attic cleanout service in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="old-furniture-removal-getting-it-out.html" tabindex="-1" aria-hidden="true"><img src="../img/p/card-furniture-820.webp" alt="Couch and furniture ready for pickup" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -529,7 +536,7 @@
         <a class="more" href="old-furniture-removal-getting-it-out.html" aria-label="Read old furniture removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="who-comes-to-your-house-junk-removal.html" tabindex="-1" aria-hidden="true"><img src="../img/p/crew-truck-1050.webp" alt="The Hero's Junk Removal crew with the truck and trailer" width="1050" height="1400" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How We Work</span>
@@ -539,7 +546,7 @@
         <a class="more" href="who-comes-to-your-house-junk-removal.html" aria-label="Read who comes to your house on a junk removal job">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="fence-and-deck-teardown-debris.html" tabindex="-1" aria-hidden="true"><img src="../img/debris.jpg" alt="Junk pile ready for pickup" width="1300" height="867" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -549,7 +556,7 @@
         <a class="more" href="fence-and-deck-teardown-debris.html" aria-label="Read fence and deck teardown debris removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="same-day-junk-removal-what-typical-means.html" tabindex="-1" aria-hidden="true"><img src="../img/p/card-sameday-820.webp" alt="Same-day junk removal" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How The Work Runs</span>
@@ -559,7 +566,7 @@
         <a class="more" href="same-day-junk-removal-what-typical-means.html" aria-label="Read what same-day junk removal really means in the northern DFW suburbs">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="what-to-clear-before-listing-photos.html" tabindex="-1" aria-hidden="true"><img src="../img/house-hero-sm.webp" alt="A North Texas house ready for listing photos" width="700" height="654" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -569,7 +576,7 @@
         <a class="more" href="what-to-clear-before-listing-photos.html" aria-label="Read what to clear out of a house before listing photos">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="office-and-small-commercial-cleanouts.html" tabindex="-1" aria-hidden="true"><img src="../img/p/rig-loaded-1100.webp" alt="Trailer loaded with junk, ready to haul" width="1100" height="733" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -579,7 +586,7 @@
         <a class="more" href="office-and-small-commercial-cleanouts.html" aria-label="Read office and small commercial cleanouts in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="moving-out-what-to-haul-instead-of-moving.html" tabindex="-1" aria-hidden="true"><img src="../img/p/rig-loaded-1100.webp" alt="Trailer loaded with junk ready to haul" width="1100" height="733" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">What We Haul</span>
@@ -589,7 +596,7 @@
         <a class="more" href="moving-out-what-to-haul-instead-of-moving.html" aria-label="Read what to haul instead of moving during a move">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="cleanouts">
         <a class="card-img" href="downsizing-a-parent-into-assisted-living.html" tabindex="-1" aria-hidden="true"><img src="../img/p/card-estate-820.webp" alt="An estate cleanout in progress" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Estate and Downsizing</span>
@@ -599,7 +606,7 @@
         <a class="more" href="downsizing-a-parent-into-assisted-living.html" aria-label="Read how to downsize a parent moving into assisted living">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="dumpster-rental-vs-junk-removal.html" tabindex="-1" aria-hidden="true"><img src="../img/p/rig-loaded-1100.webp" alt="Trailer loaded with junk ready to haul" width="1100" height="733" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Comparison</span>
@@ -609,7 +616,7 @@
         <a class="more" href="dumpster-rental-vs-junk-removal.html" aria-label="Read the dumpster rental versus junk removal comparison">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="where-your-junk-goes-after-pickup.html" tabindex="-1" aria-hidden="true"><img src="../img/p/crew-truck-1050.webp" alt="The Hero's Junk Removal crew with the truck and trailer" width="1050" height="1400" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How It Works</span>
@@ -619,7 +626,7 @@
         <a class="more" href="where-your-junk-goes-after-pickup.html" aria-label="Read where junk goes after removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="mattress-disposal-dfw.html" tabindex="-1" aria-hidden="true"><img src="../img/p/card-furniture-820.webp" alt="Furniture ready for pickup" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Disposal Rules</span>
@@ -629,7 +636,7 @@
         <a class="more" href="mattress-disposal-dfw.html" aria-label="Read mattress disposal options in DFW">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="appliance-and-electronics-disposal-north-texas.html" tabindex="-1" aria-hidden="true"><img src="../img/p/appliance-820.webp" alt="Appliances ready for pickup" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Disposal Rules</span>
@@ -639,7 +646,7 @@
         <a class="more" href="appliance-and-electronics-disposal-north-texas.html" aria-label="Read appliance and electronics disposal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="rental-property-cleanout.html" tabindex="-1" aria-hidden="true"><img src="../img/p/job-curbside-pickup-820.webp" alt="Curbside pickup job" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How It Works</span>
@@ -649,7 +656,7 @@
         <a class="more" href="rental-property-cleanout.html" aria-label="Read rental property cleanout in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="apartment-junk-removal.html" tabindex="-1" aria-hidden="true"><img src="../img/p/job-curbside-pickup-820.webp" alt="Curbside pickup job" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How It Works</span>
@@ -659,7 +666,7 @@
         <a class="more" href="apartment-junk-removal.html" aria-label="Read apartment junk removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="cleanouts">
         <a class="card-img" href="storage-unit-junk-removal.html" tabindex="-1" aria-hidden="true"><img src="../img/p/job-garage-clearout-900.webp" alt="A cleared space after a cleanout" width="900" height="1125" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Cleanouts</span>
@@ -669,7 +676,7 @@
         <a class="more" href="storage-unit-junk-removal.html" aria-label="Read storage unit junk removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="cleanouts">
         <a class="card-img" href="hoarder-house-junk-removal.html" tabindex="-1" aria-hidden="true"><img src="../img/p/job-garage-clearout-900.webp" alt="A cleared space after a cleanout" width="900" height="1125" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Cleanouts</span>
@@ -679,7 +686,7 @@
         <a class="more" href="hoarder-house-junk-removal.html" aria-label="Read hoarder house junk removal in North Texas">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="what-junk-removal-will-and-will-not-take.html" tabindex="-1" aria-hidden="true"><img src="../img/p/crew-truck-1050.webp" alt="The Hero's Junk Removal crew with the truck and trailer" width="1050" height="1400" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How It Works</span>
@@ -689,7 +696,7 @@
         <a class="more" href="what-junk-removal-will-and-will-not-take.html" aria-label="Read what junk removal will and will not take">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="cleanouts">
         <a class="card-img" href="estate-cleanout-checklist.html" tabindex="-1" aria-hidden="true"><img src="../img/p/estate-820.webp" alt="An estate cleanout in progress" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Cleanouts</span>
@@ -699,7 +706,7 @@
         <a class="more" href="estate-cleanout-checklist.html" aria-label="Read the estate cleanout checklist">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="donate-furniture-dfw.html" tabindex="-1" aria-hidden="true"><img src="../img/p/card-furniture-820.webp" alt="Furniture ready for pickup" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Donation</span>
@@ -709,7 +716,7 @@
         <a class="more" href="donate-furniture-dfw.html" aria-label="Read the DFW donation guide">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="haul">
         <a class="card-img" href="hot-tub-shed-playset-removal.html" tabindex="-1" aria-hidden="true"><img src="../img/hottub.jpg" alt="Hot tub removal" width="1300" height="867" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Backyard</span>
@@ -719,7 +726,7 @@
         <a class="more" href="hot-tub-shed-playset-removal.html" aria-label="Read the hot tub, shed, and playset removal guide">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="cleanouts">
         <a class="card-img" href="garage-cleanout-checklist.html" tabindex="-1" aria-hidden="true"><img src="../img/p/job-garage-cleanout-960.webp" alt="A garage stacked with items waiting for pickup" width="960" height="640" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">Cleanouts</span>
@@ -729,7 +736,7 @@
         <a class="more" href="garage-cleanout-checklist.html" aria-label="Read the garage cleanout checklist">Read the guide<i aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card post-card">
+      <div class="card post-card" data-topic="how">
         <a class="card-img" href="how-junk-removal-works.html" tabindex="-1" aria-hidden="true"><img src="../img/p/card-sameday-820.webp" alt="Same-day junk removal" width="820" height="547" loading="lazy"></a>
         <div class="card-body">
         <span class="tag">How It Works</span>
@@ -818,5 +825,6 @@
 <script type="module" src="../assets/logo-piece/logo-piece.js?v=5"></script>
 <script src="../assets/scroll.js?v=1" defer></script>
 <script src="../assets/trinity.js?v=12" defer></script>
+<script src="../assets/blog.js?v=1" defer></script>
 </body>
 </html>

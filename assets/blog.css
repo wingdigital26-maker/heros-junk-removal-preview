@@ -1,0 +1,86 @@
+/* ===== Site11: the blog matches the service pages. Warm page header (crumb, title, plain meta), a two-column body
+   with the post at ~68ch beside a sticky "Send the photo now" card and a contents list, numbered story heads on every
+   h2, hairline-row lists, navy pull quotes, warm callouts, the post's own photo at its natural aspect; the index gets
+   topic chips ===== */
+.post-header{padding:32px 0 64px;}
+.post-header .breadcrumbs{margin-bottom:22px;}
+.post-header h1{max-width:20ch;}
+.post-header .post-date-meta{margin-top:22px;font-size:var(--fs-meta,14px);color:var(--grey);max-width:none;}
+.post-body{background:#fff;padding:72px 0 96px;}
+.post-body-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:80px;align-items:start;}
+.post-body .post-col{max-width:68ch;margin:0;}
+.post-body .post-hero-media{aspect-ratio:auto;margin:0 0 44px;max-width:none;border-radius:10px;overflow:hidden;background:var(--warm);box-shadow:0 30px 60px -30px rgba(20,40,75,.35);}
+.post-body .post-hero-media img{position:static;width:100%;height:auto;display:block;object-fit:contain;}
+.post-body .post-hero-media img[src*="crew-truck"]{max-height:560px;}
+.post-header + .wrap .post-hero-media{margin-top:0;}
+/* story index on every h2: red number, hairline, then the head */
+.post-col .post{counter-reset:posth2;}
+.post-col .post h2{counter-increment:posth2;margin:64px 0 18px;padding-top:22px;border-top:1px solid var(--hair-warm);scroll-margin-top:110px;}
+.post-col .post h2::before{content:"(" counter(posth2,decimal-leading-zero) ")";display:block;font-size:13px;font-weight:600;color:var(--red);letter-spacing:.02em;line-height:1;margin-bottom:16px;font-variant-numeric:tabular-nums;}
+.post-col .post h3{margin:32px 0 10px;font-size:var(--fs-h3);}
+.post-col .post .lead{margin-bottom:28px;}
+.post-col .post .post-figure{margin:36px 0;}
+.post-col .post .post-figure img,.post-col .post img{display:block;width:100%;height:auto;border-radius:10px;margin:0;background:var(--warm);}
+.post-col .post ul{list-style:none;margin:8px 0 28px;padding:0;border-top:1px solid var(--hair);}
+.post-col .post ul > li{margin:0;padding:14px 0;border-bottom:1px solid var(--hair);line-height:1.6;}
+.post-col .post ul ul{border-top:none;margin:10px 0 0;}
+.post-col .post ul ul > li{border-bottom:none;padding:4px 0 4px 18px;position:relative;}
+.post-col .post ul ul > li::before{content:"";position:absolute;left:0;top:.8em;width:8px;height:1px;background:var(--navy);}
+.post-col .post ol{list-style:none;margin:8px 0 28px;padding:0;border-top:1px solid var(--hair);counter-reset:postli;}
+.post-col .post ol > li{counter-increment:postli;margin:0;padding:14px 0;border-bottom:1px solid var(--hair);display:grid;grid-template-columns:40px minmax(0,1fr);gap:0;line-height:1.6;}
+.post-col .post ol > li::before{content:counter(postli,decimal-leading-zero);font-size:13px;font-weight:600;color:var(--red);font-variant-numeric:tabular-nums;padding-top:.45em;line-height:1;}
+.post-col .post blockquote{margin:36px 0;padding:28px 32px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-size:20px;line-height:1.35;font-weight:600;letter-spacing:-0.02em;}
+.post-col .post blockquote p{color:#fff;margin:0;}
+.post-col .post blockquote p + p{margin-top:12px;font-size:15px;font-weight:400;color:#C9D2E3;}
+.post-col .post .callout,.post-col .post .svc-callout{margin:36px 0;padding:24px 26px;background:var(--warm);border-radius:10px;}
+.post-col .post .callout p{margin:0;}
+.post-col .post table{margin:28px 0;font-size:16px;}
+.post-col .post th{background:transparent;border-bottom:1px solid var(--navy);font-size:13px;font-weight:600;color:var(--grey);padding:10px 12px 12px 0;}
+.post-col .post td{padding:14px 12px 14px 0;border-bottom:1px solid var(--hair);vertical-align:top;}
+.post-col .post .faq{margin-top:4px;border-top:1px solid var(--hair);}
+.post-col .post .faq details{border-bottom:1px solid var(--hair);}
+.post-col .post .faq summary{min-height:44px;padding:18px 0;font-weight:600;color:var(--navy);gap:20px;font-size:var(--fs-body);}
+.post-col .post .faq p{padding:0 64px 22px 0;}
+.post-col .post > p:last-child{margin-top:28px;padding-top:22px;border-top:1px solid var(--hair);font-size:16px;color:var(--grey);}
+/* aside: contents list above the sticky send card */
+.post-aside{display:flex;flex-direction:column;gap:20px;}
+.post-toc{background:#fff;border:1px solid var(--hair);border-radius:10px;padding:22px 24px 10px;}
+.post-toc-h{display:block;font-size:13px;font-weight:600;color:var(--red);letter-spacing:.02em;margin-bottom:10px;}
+.post-toc ol{list-style:none;margin:0;padding:0;counter-reset:toc;}
+.post-toc li{counter-increment:toc;border-top:1px solid var(--hair);}
+.post-toc a{display:grid;grid-template-columns:30px minmax(0,1fr);align-items:center;min-height:44px;padding:8px 0;font-size:14px;line-height:1.35;color:var(--navy);text-decoration:none;}
+.post-toc a::before{content:counter(toc,decimal-leading-zero);font-size:12px;font-weight:600;color:var(--grey);font-variant-numeric:tabular-nums;}
+.post-toc a:hover{color:var(--red);}
+.post-aside .svc-aside-card{display:flex;flex-direction:column;}
+.post-aside .svc-aside-card .dock{display:block;margin:0 0 18px;}
+.post-aside .svc-aside-card .call-quiet{width:100%;margin-top:10px;}
+@media (min-width:1025px){.post-aside{position:sticky;top:104px;}.post-aside .svc-aside-card{position:static;}}
+/* the sections after the post keep their scale; the reviews band opens straight after the white body */
+.post-reviews-section{padding:96px 0;}
+.keep-reading-section{padding:96px 0;}
+.keep-grid.svc-grid .svc-tile img{aspect-ratio:16/10;}
+/* index: topic chips */
+.post-filter{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 36px;}
+.post-chip{font:inherit;font-size:14px;font-weight:600;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--hair-warm);background:#fff;color:var(--navy);cursor:pointer;transition:background .2s,border-color .2s,color .2s;}
+.post-chip:hover{border-color:var(--navy);}
+.post-chip.is-on{background:var(--navy);border-color:var(--navy);color:#fff;}
+.blog-grid .card.post-card[hidden]{display:none;}
+body.blog-index .post-header{padding-bottom:64px;}
+@media (max-width:1024px){
+  .post-body-grid{grid-template-columns:1fr;gap:40px;}
+  .post-body .post-col{max-width:var(--col-text);}
+  .post-toc{display:none;}
+  .post-body{padding:48px 0 72px;}
+}
+@media (max-width:760px){
+  .post-header{padding:12px 0 44px;}
+  .post-body{padding:36px 0 56px;}
+  .post-body .post-hero-media{margin-bottom:32px;}
+  .post-col .post h2{margin-top:48px;}
+  .post-col .post .faq p{padding-right:0;}
+  .post-col .post blockquote{padding:22px 22px;font-size:18px;}
+  .post-reviews-section,.keep-reading-section{padding:64px 0;}
+  .post-filter{margin-bottom:24px;}
+}
+.blog-band{background:var(--navy);}
+
