@@ -1094,6 +1094,9 @@ html.js .t-sec-head.rise{transform:none;}
 .t-mm-group > a{display:flex;align-items:center;min-height:48px;padding:0 var(--pad) 0 calc(var(--pad) + 18px);font-size:15px;font-weight:500;color:var(--text);background:var(--warm);border-top:1px solid #EAE6DE;}
 .t-mm-group > a.t-mm-all{color:var(--red);font-weight:600;}
 .t-mm-group > a:last-child{border-bottom:1px solid #EAE6DE;}
+/* Areas group: each city hub, then its two city+service pages, indented under it */
+.t-mm-group > a.t-mm-sub{min-height:44px;padding-left:calc(var(--pad) + 34px);font-size:14px;font-weight:400;color:var(--grey);border-top:none;}
+.t-mm-group > a.t-mm-sub:hover{color:var(--red);}
 .t-mobile-menu a[aria-current="page"]{color:var(--red);}
 .t-mm-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:20px var(--pad) 24px;border-top:1px solid var(--hair);}
 .t-mm-actions .t-pill{justify-content:center;min-height:48px;}
@@ -1133,17 +1136,16 @@ body.t-menu-open{overflow:hidden;}
   .t-mobile-menu{max-height:calc(100vh - 92px);max-height:calc(100dvh - 92px);}
 }
 
-/* mega menu: compact rows; up to 1300px it spans the header (ten cities in five columns) instead of hanging off the nav */
+/* mega menu: compact rows; at every desktop width it spans the header (ten cities, each with its hub and two
+   city services, in five columns = two rows) instead of hanging off the nav, so it stays short enough for a 720px-tall screen */
 .t-menu-inner .t-mega-city > a{min-height:30px;}
 .t-mega-services{min-width:236px;}
 .t-mega-services > a{white-space:nowrap;}
-@media (max-width:1300px){
-  .t-header-inner{position:relative;}
-  .t-nav-item.t-has-menu:first-child{position:static;}
-  .t-menu-mega{left:var(--pad);right:var(--pad);}
-  .t-menu-inner.t-mega{grid-template-columns:236px 1fr;}
-  .t-menu-inner .t-mega-city-grid{grid-template-columns:repeat(5,minmax(0,1fr));}
-}
+.t-header-inner{position:relative;}
+.t-nav-item.t-has-menu:first-child{position:static;}
+.t-menu-mega{left:var(--pad);right:var(--pad);}
+.t-menu-inner.t-mega{grid-template-columns:236px 1fr;}
+.t-menu-inner .t-mega-city-grid{grid-template-columns:repeat(5,minmax(0,1fr));}
 .t-mega-col > a.t-menu-all{display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding-top:10px;border-top:1px solid var(--hair);font-weight:600;min-height:48px;font-size:14px;color:var(--navy);}
 .t-mega-col > a.t-menu-all::after{display:none;}
 .t-mega-col > a.t-menu-all i{width:32px;height:32px;border-radius:50%;border:1px solid #CFCAC0;position:relative;flex:0 0 auto;transition:background .3s,border-color .3s,transform .45s cubic-bezier(.2,.7,.2,1);}
