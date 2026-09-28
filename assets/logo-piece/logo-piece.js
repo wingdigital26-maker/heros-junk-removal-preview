@@ -14,10 +14,11 @@
  * its own critically damped spring: cubes switch from the old form's slot to the new form's slot one by one
  * (staggered along the travel direction), drift on a divergence-free (ABC) curl field while in flight, and settle
  * without snapping. Cube matching between consecutive docks is precomputed in Blender (nearest cube, colour kept).
- * If a flight would cross text or buttons, or the docks are far apart, the cluster thins into a small stream of
- * cubes in the right page gutter and re-forms at the next dock. Before the first / after the last dock it rests
- * in the nearest dock. Idle life never stops: breathing, sway, a ripple every few seconds, a soft contact shadow,
- * hover makes the cubes scatter and re-pop.
+ * The piece never travels: it only ever exists assembled in a dock. As the scroll leaves a dock the form
+ * dissolves in place and nothing is drawn; as the next dock scrolls into view the form assembles there from a
+ * loose cloud. No flight across the page and no thread of cubes down the gutter (removed 2026-09-28 at Nash's
+ * request). Before the first / after the last dock it rests in the nearest dock. Idle life never stops:
+ * breathing, sway, a ripple every few seconds, a soft contact shadow, hover makes the cubes scatter and re-pop.
  *
  * Reduced motion / no WebGL / a failed boot: every dock gets a static Blender render (still-<form>[-dark].png).
  * Data: shapes.json + stills from brand/logo4/build.py (Blender). three.js loads after the page has loaded.
@@ -310,22 +311,8 @@ async function boot() {
       const pr = (A.pos[k * 3] * dx - A.pos[k * 3 + 1] * dy) / ext;       // -1 trailing .. +1 leading side
       DELAY[k] = 0.06 + 0.86 * clamp01(0.6 * (0.5 - pr * 0.5) + 0.4 * R1[k]);
     }
-    // a free flight only when the docks are close and the whole path is clear of text / buttons;
-    // otherwise the form dissolves in its dock, a thread of cubes flows down the gutter, and it re-forms
-    streamSeg = A !== B && Math.abs(B.y - A.y) > 0.95 * VH;
-    if (A !== B && !streamSeg) {
-      const dB = DIM[B.form];
-      for (let i = 1; i < 12 && !streamSeg; i++) {
-        const u = i / 12, k = A.k + (B.k - A.k) * u;
-        const hw = ((d[0] + (dB[0] - d[0]) * u) / 2 + 0.8) * k + 8, hh = ((d[1] + (dB[1] - d[1]) * u) / 2 + 0.8) * k + 8;
-        const cx = A.x + (B.x - A.x) * u, cy = A.y + (B.y - A.y) * u;
-        const l = cx - hw, r = cx + hw, t = cy - hh, b = cy + hh;
-        for (let o = 0; o < nObst; o++) {
-          const j = o * 4;
-          if (r > obst[j] && l < obst[j + 2] && b > obst[j + 1] && t < obst[j + 3]) { streamSeg = true; break; }
-        }
-      }
-    }
+    // never a flight: every hop dissolves the form in its dock and re-forms it in the next one
+    streamSeg = A !== B;
   }
 
   // ---- input
@@ -406,7 +393,7 @@ async function boot() {
       spinV += (30 * (spT - spin) - 11 * spinV) * dt; spin += spinV * dt;
     }
     const stc = clamp01(st);
-    // stream phase: the form has dissolved to nothing and a thread of cubes flows down the right gutter
+    // gap phase: the form has dissolved to nothing; nothing is drawn until the next dock re-forms it in place
     const inStream = stc >= 0.5;
     if (inStream !== streamPhase) {                                 // swap while every cube is at scale 0
       streamPhase = inStream;
@@ -416,12 +403,11 @@ async function boot() {
         px = tx; py = ty; vx = vy = 0; kS = tk; kV = 0;
       }
     }
-    const vis = inStream ? smooth((stc - 0.5) / 0.5) : 1 - smooth(stc / 0.5);
+    const vis = inStream ? 0 : 1 - smooth(stc / 0.5);
     const calm = inStream ? 0 : 1 - stc * 2;
 
     // ---- hover: cubes scatter and re-pop
-    const vxp = inStream ? Math.max(8, Math.min(12, VW * 0.008)) : px;   // left gutter (the right edge holds the section rail)
-    const vyp = inStream ? VH * (0.22 + 0.56 * s) : py - sy;
+    const vxp = px, vyp = py - sy;                                     // always the dock itself
     const reach = Math.max(40, kS * (Math.max(dimW, dimH) * 0.55 + 1));
     const over = !inStream && stc < 0.1 && mid < 0.2 && Math.hypot(mx - vxp, my - vyp) < reach ? 1 : 0;
     spreadV += ((over - spread) * 90 - spreadV * 9) * dtAll;
@@ -456,21 +442,14 @@ async function boot() {
     // ---- cubes
     const PA = A.pos, PB = B.pos, CA = A.col, CB = B.col;
     const cf = 1 - Math.exp(-dtAll * 5);
-    const streamH = VH * 0.3 / 4.2, flow = time * 0.07;
     const t1 = time * 0.55, t2 = time * 0.43;
     for (let k = 0; k < N; k++) {
       const j = k * 3;
       const toB = streamSeg ? s > 0.5 : s > DELAY[k];
       const T = toB ? PB : PA, TC = toB ? CB : CA;
       let x, y, z, sc, ang = 0;
-      if (inStream) {                                   // kinematic thread, flowing down, tapered ends
-        let f = RANK[k] + flow; f -= Math.floor(f);
-        const yy = (f - 0.5) * streamH;
-        x = (R1[k] - 0.5) * 1.3 + 0.45 * Math.sin(yy * 0.4 - time * 2.2);
-        y = -yy; z = (R2[k] - 0.5) * 1.5;
-        sc = vis * Math.sin(Math.PI * f) * 0.9;
-        ang = time * (R2[k] - 0.5) * 2;
-        X[j] = x; X[j + 1] = y; X[j + 2] = z;
+      if (inStream) {                                   // dissolved: hold the cubes where they are, draw nothing
+        x = X[j]; y = X[j + 1]; z = X[j + 2]; sc = 0;
       } else {
         let Tx = T[j], Ty = T[j + 1], Tz = T[j + 2];
         if (stc > 0.001) { const g = 1 + stc * 0.9; Tx *= g; Ty *= g; Tz += stc * 5 * (0.5 + R1[k]); }  // dissolve outwards
@@ -517,8 +496,8 @@ async function boot() {
     lastX = vxp; lastY = vyp; lastPk = pk;
 
     // draw only while the piece is near the viewport
-    const ext = inStream ? VH : (Math.max(dimW, dimH) + 4) * kS;
-    const visible = vyp > -ext - 60 && vyp < VH + ext + 60 && !(menu && menu.classList.contains('open'));
+    const ext = (Math.max(dimW, dimH) + 4) * kS;
+    const visible = !inStream && vyp > -ext - 60 && vyp < VH + ext + 60 && !(menu && menu.classList.contains('open'));
     if (visible) {
       mesh.instanceMatrix.needsUpdate = true;
       mesh.instanceColor.needsUpdate = true;
@@ -550,7 +529,7 @@ async function boot() {
   window.__logoPiece = {
     segs: () => docks.map((d, i) => i),
     state: () => ({ free: !streamSeg, docks: docks.map((d) => d.form), G: +lastG.toFixed(3), s: +lastS.toFixed(3), stream: +st.toFixed(3),
-      x: Math.round(lastX), y: Math.round(lastY), k: +lastPk.toFixed(2), phase: streamPhase ? 'stream' : 'form' }),
+      x: Math.round(lastX), y: Math.round(lastY), k: +lastPk.toFixed(2), phase: streamPhase ? 'gap' : 'form' }),
     slow: (n) => { slow = Math.max(1, Math.min(20, +n || 1)); },
     layout,
   };

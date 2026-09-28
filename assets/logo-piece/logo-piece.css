@@ -1,4 +1,5 @@
-/* Hero's travelling cube piece (piece5): dock stations + the one full-viewport canvas. See logo-piece.js.
+/* Hero's cube piece (piece5): dock stations + the one full-viewport canvas. See logo-piece.js.
+   The piece only ever appears assembled in a dock (no travel, no gutter thread).
    Dock API: <span class="dock" data-form="pin|truck|couch|star|camera|house|h|box" data-size="S|M|L" aria-hidden="true"></span>
    The piece never docks in the header. Page CSS places the docks; this file only sizes them. */
 .lp-canvas{position:fixed;left:0;top:0;width:100%;height:100%;z-index:45;/* under the header (50), over the rail (40) */pointer-events:none;display:block;}
