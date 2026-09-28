@@ -25,6 +25,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/trinity.css?v=37">
 <link rel="stylesheet" href="assets/logo-piece/logo-piece.css?v=1">
+<link rel="stylesheet" href="assets/before-after.css?v=1">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Hero's Junk Removal","url":"https://herosjunkremovaltx.com/","telephone":"+12142779069","email":"herosjunkremovaltx@gmail.com","image":"https://herosjunkremovaltx.com/img/house-hero.webp","areaServed":["Frisco, TX","Plano, TX","McKinney, TX","Prosper, TX","Allen, TX","Little Elm, TX","Dallas, TX","Carrollton, TX","The Colony, TX","Wylie, TX"],"openingHours":"Mo-Su 07:00-20:00","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","bestRating":"5"}}
@@ -290,12 +291,18 @@
     </div>
 
     <div class="t-work-grid">
-      <figure class="t-work-fig t-work-f1">
-        <a class="t-work-card rise" href="services/garage-cleanouts.html">
-          <img class="t-main" src="img/p/job-garage-cleanout-960.webp" alt="A garage stacked with items waiting for pickup">
-          <img class="t-inset" src="img/p/garage-900.webp" alt="Garage cleanout">
-        </a>
-        <figcaption class="t-work-cap"><span>Garage cleanouts</span><span class="t-num">(01)</span></figcaption>
+      <figure class="t-work-fig t-work-f1 ba ba-home"><!-- before-after -->
+        <div class="rise">
+        <figure class="ba-slider" data-ba-slider style="--ba-pos:50%">
+  <img class="ba-after-img" src="img/before-after/garage-after-1-640.webp" srcset="img/before-after/garage-after-1-640.webp 640w, img/before-after/garage-after-1-1100.webp 1100w" sizes="(max-width:1000px) calc(100vw - 32px), 56vw" width="1100" height="825" alt="The same garage with an empty, swept concrete floor" loading="lazy">
+  <img class="ba-before-img" src="img/before-after/garage-before-1-640.webp" srcset="img/before-after/garage-before-1-640.webp 640w, img/before-after/garage-before-1-1100.webp 1100w" sizes="(max-width:1000px) calc(100vw - 32px), 56vw" width="1100" height="825" alt="A two-car garage floor covered in moving boxes, bins and chairs" loading="lazy">
+  <span class="ba-chip ba-chip--before">Before</span><span class="ba-chip ba-chip--after">After</span>
+  <input class="ba-range" type="range" min="0" max="100" step="1" value="50" aria-label="Drag to compare before and after">
+  <span class="ba-line" aria-hidden="true"></span><span class="ba-knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-5 6 5 6"/><path d="M15 6l5 6-5 6"/></svg></span>
+</figure>
+        </div>
+        <figcaption class="t-work-cap"><span>Garage cleanout, before and after</span><span class="t-num">(01)</span></figcaption>
+        <a class="t-seeall rise" href="work.html#before-after" style="margin-top:18px">See every before and after<i aria-hidden="true"></i></a>
       </figure>
       <figure class="t-work-fig t-work-f2">
         <a class="t-work-card rise" href="services/furniture-removal.html">
@@ -494,6 +501,7 @@
 </footer>
 
 <script src="assets/trinity.js?v=12" defer></script>
+<script src="assets/before-after.js?v=1" defer></script>
 <script src="assets/scroll.js?v=1" defer></script>
 <script type="module" src="assets/logo-piece/logo-piece.js?v=5"></script>
 </body>

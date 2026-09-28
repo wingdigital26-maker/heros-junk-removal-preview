@@ -1,0 +1,69 @@
+/* Hero's Junk Removal: BEFORE / AFTER component (assets/before-after.css, with assets/before-after.js)
+   Two layouts. .ba-slider is a drag comparison for a pair shot from a matching angle: after photo underneath,
+   before photo on top clipped to --ba-pos, a native range input over the whole photo does the dragging (mouse,
+   touch and arrow keys) and a 44px knob shows where it is. .ba-row lays tiles side by side, each with its own
+   Before / After chip, for jobs with several befores or photos from different angles: nothing overlaps and
+   nothing is cropped. Inter, navy #14284B, red #D62A1E on the knob only, warm #F7F5F1 frames, 10px radius. */
+.ba{--ba-navy:#14284B;--ba-red:#D62A1E;--ba-warm:#F7F5F1;--ba-text:#3B4252;--ba-hair:#E3DFD7;}
+.ba-job{margin:0;}
+.ba-job + .ba-job{margin-top:64px;padding-top:56px;border-top:1px solid var(--ba-hair);}
+.ba-title{font-size:clamp(22px,2vw,28px);font-weight:700;letter-spacing:-0.03em;line-height:1.1;color:var(--ba-navy);margin:0 0 8px;}
+.ba-cap{font-size:16px;line-height:1.55;color:var(--ba-text);max-width:62ch;margin:0 0 22px;}
+
+.ba-chip{position:absolute;top:12px;left:12px;z-index:3;display:inline-flex;align-items:center;min-height:28px;padding:0 12px;border-radius:999px;background:#fff;color:var(--ba-navy);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;line-height:1;pointer-events:none;}
+.ba-chip--after{left:auto;right:12px;}
+
+/* --- drag slider --- */
+.ba-slider{position:relative;margin:0;overflow:hidden;border-radius:10px;background:var(--ba-warm);user-select:none;-webkit-user-select:none;--ba-pos:50%;}
+.ba-slider img{width:100%;height:auto;display:block;border-radius:10px;}
+.ba-slider .ba-before-img{position:absolute;inset:0;height:100%;object-fit:cover;clip-path:inset(0 calc(100% - var(--ba-pos)) 0 0);}
+.ba-line{position:absolute;top:0;bottom:0;left:var(--ba-pos);width:2px;margin-left:-1px;background:#fff;z-index:2;pointer-events:none;}
+.ba-knob{position:absolute;top:50%;left:var(--ba-pos);width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:#fff;border:1.5px solid var(--ba-navy);color:var(--ba-navy);display:flex;align-items:center;justify-content:center;z-index:2;pointer-events:none;transition:background .25s,border-color .25s,color .25s;}
+.ba-knob svg{width:20px;height:20px;display:block;}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;opacity:0;cursor:ew-resize;z-index:4;-webkit-appearance:none;appearance:none;background:transparent;touch-action:pan-y;}
+.ba-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:44px;height:44px;}
+.ba-range::-moz-range-thumb{width:44px;height:44px;border:0;}
+.ba-slider:hover .ba-knob,.ba-slider.is-dragging .ba-knob{background:var(--ba-red);border-color:var(--ba-red);color:#fff;}
+.ba-slider:focus-within .ba-knob{outline:2px solid var(--ba-red);outline-offset:3px;}
+.ba-hint{font-size:13px;color:var(--ba-text);margin:12px 0 0;}
+
+/* --- side by side tiles --- */
+.ba-row{display:grid;gap:16px;margin:0;}
+.ba-row--1{grid-template-columns:1fr 1fr;}
+.ba-row--2{grid-template-columns:1fr 1fr;}
+.ba-row--3{grid-template-columns:1fr 1fr 1fr;}
+.ba-row + .ba-row{margin-top:16px;}
+.ba-tile{position:relative;margin:0;border-radius:10px;overflow:hidden;background:var(--ba-warm);}
+.ba-tile img{width:100%;height:auto;display:block;border-radius:10px;}
+.ba-arrow{display:flex;align-items:center;gap:12px;margin:22px 0 14px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ba-navy);}
+.ba-arrow::after{content:"";flex:1;max-width:120px;height:1px;background:#CFCAC0;}
+
+/* --- where it sits --- */
+.ba-home .ba-slider{width:100%;}
+.ba-home .t-work-cap{margin-top:18px;}
+.ba-work{padding:96px 0 110px;}
+.ba-work .ba-intro{max-width:720px;margin-bottom:56px;}
+.ba-work .ba-intro h2{font-size:clamp(34px,3.8vw,56px);letter-spacing:-0.04em;line-height:1;margin:0 0 18px;color:var(--ba-navy);}
+.ba-work .ba-intro p{font-size:17px;line-height:1.55;color:var(--ba-text);max-width:52ch;margin:0;}
+.ba-work-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;row-gap:72px;}
+.ba-work-grid .ba-job + .ba-job{margin-top:0;padding-top:0;border-top:none;}
+.ba-svc{margin-top:40px;}
+.ba-svc .ba-title{font-size:22px;}
+.ba-svc .ba-more{display:inline-flex;align-items:center;min-height:44px;margin-top:14px;font-size:15px;font-weight:600;color:var(--ba-navy);text-decoration:underline;text-decoration-color:#CFCAC0;text-underline-offset:4px;}
+.ba-svc .ba-more:hover{text-decoration-color:var(--ba-navy);}
+
+@media (max-width:1000px){
+  .ba-work-grid{grid-template-columns:1fr;row-gap:64px;}
+}
+@media (max-width:760px){
+  .ba-work{padding-top:56px;}
+  .ba-work .ba-intro{margin-bottom:36px;}
+  .ba-job + .ba-job{margin-top:44px;padding-top:40px;}
+  .ba-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:12px;padding-bottom:6px;scrollbar-width:none;}
+  .ba-row::-webkit-scrollbar{display:none;}
+  .ba-row .ba-tile{flex:0 0 74%;scroll-snap-align:start;}
+  .ba-row--2 .ba-tile{flex-basis:calc(50% - 6px);}
+  .ba-row--1 .ba-tile{flex-basis:74%;}
+  .ba-chip{top:10px;left:10px;min-height:26px;padding:0 10px;font-size:11px;}
+  .ba-chip--after{left:auto;right:10px;}
+}
