@@ -67,3 +67,10 @@
   .ba-chip{top:10px;left:10px;min-height:26px;padding:0 10px;font-size:11px;}
   .ba-chip--after{left:auto;right:10px;}
 }
+
+/* Site14 round 3: a job with one After photo shows it across the whole block (3:2 crop, counters kept) instead of
+   one portrait tile beside an empty cell */
+@media (min-width:761px){
+  .ba-row--1{grid-template-columns:1fr;}
+  .ba-row--1 .ba-tile img{aspect-ratio:20/13;object-fit:cover;object-position:50% 62%;}
+}

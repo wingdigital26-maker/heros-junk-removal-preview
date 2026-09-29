@@ -1252,7 +1252,8 @@ h2.t-headline,.t-coverage-line,.t-reviews-lede .t-headline,.t-sec-h,.t-faq-h{fon
    piece assembles in place there (the script only ever draws inside a dock) and never sits in a pill row or
    between a heading and its lede again. The hero keeps its own dock under the headline. */
 .t-sec-head > .dock{margin-left:auto;}
-.t-sec-head:has(> .dock){align-items:center;margin-bottom:14px;}
+.t-sec-head:has(> .dock){align-items:flex-end;margin-bottom:14px;}
+.t-sec-head:has(> .dock) > .t-sec-n,.t-sec-head:has(> .dock) > .t-sec-rule{margin-bottom:10px;}
 .t-sec-head:has(> .dock) .t-sec-rule{max-width:none;}
 /* the dock sits on the right edge of the section's copy block, so the rule spans exactly the text below it */
 .t-work-head-copy .t-sec-head:has(> .dock){max-width:760px;}
@@ -1266,3 +1267,12 @@ h2.t-headline,.t-coverage-line,.t-reviews-lede .t-headline,.t-sec-h,.t-faq-h{fon
   .t-sec-head > .dock[data-phone]{--dock:72px;}
   .t-sec-head:has(> .dock){margin-bottom:12px;}
 }
+
+/* ===== Site14 round 1 ===== */
+/* the piece stands on the section rule instead of floating 60px above the heading (the rule was centred on a
+   136px dock, so every section head carried a band of dead space between the rule and its heading) */
+.t-coverage-copy{justify-content:flex-start;gap:36px;}
+.t-crew-block{padding-top:18px;}
+/* wide forms (truck, couch) get a shorter dock on section heads so they stand on the rule like the tall ones,
+   instead of floating in the middle of a square dock with empty space under the wheels */
+.t-sec-head > .dock[data-form="truck"],.t-sec-head > .dock[data-form="couch"]{height:calc(var(--dock,136px) * .64);}
